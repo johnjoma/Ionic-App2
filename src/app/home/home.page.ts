@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AlertController, ModalController } from '@ionic/angular';
+import { AgreeModalComponent } from '../agree-modal/agree-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,22 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  agreements = [
+    {
+      name:'Apply Now',
+      
+    }
+  ];
+
+  constructor( private modalCtrl: ModalController) { }
+
+  async openModal(){
+    const modal = await this.modalCtrl.create({
+component: AgreeModalComponent
+    });
+
+    await modal.present();
+  }
+ 
 
 }
